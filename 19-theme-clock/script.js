@@ -4,6 +4,9 @@ const secondEl = document.querySelector('.second');
 const timeEl = document.querySelector('.time');
 const dateEl = document.querySelector('.date');
 const toggleEl = document.querySelector('.toggle');
+const needleSecond = document.querySelector('.needle.second');
+const needleMinute = document.querySelector('.needle.minute');
+const needleHour = document.querySelector('.needle.hour');
 
 const days = [
   'Sunday',
@@ -47,7 +50,7 @@ function setTime() {
   const day = time.getDay();
   const date = time.getDate();
   const hours = time.getHours();
-  const hoursForClock = hours % 12;
+  const hoursForClock = hours >= 13 ? hours % 12 : hours;
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
   const ampm = hours >= 12 ? 'PM' : 'AM';
@@ -81,6 +84,17 @@ function setTime() {
   } ${ampm}`;
 
   dateEl.innerHTML = `${days[day]}, ${months[month]} <span class="circle">${date}</span>`;
+
+  // fixes the spin on the clock when any element reaches 0
+  needleHour.style.transition = `${hours === 0 ? 'none' : 'all 0.5s ease-in'}`;
+
+  needleMinute.style.transition = `${
+    minutes === 0 ? 'none' : 'all 0.5s ease-in'
+  }`;
+
+  needleSecond.style.transition = `${
+    seconds === 0 ? 'none' : 'all 0.5s ease-in'
+  }`;
 }
 
 // StackOverflow https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
