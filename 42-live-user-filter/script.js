@@ -19,8 +19,6 @@ async function getData() {
 
     const { picture, name, location } = user;
 
-    console.log(picture, name, location);
-
     li.innerHTML = `
       <img src="${picture.large}" alt="${name.first}">
       <div class="user-info"> 
