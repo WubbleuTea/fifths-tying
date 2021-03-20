@@ -10,10 +10,25 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>My Project</title>
+    <title>Todo List</title>
   </head>
   <body>
-    <h1>Project Starter</h1>
+    <h1>Todos</h1>
+    <form class="form" id="form">
+      <input
+        type="text"
+        class="input"
+        id="input"
+        placeholder="Enter your todo"
+        autocomplete="off"
+      />
+
+      <ul class="todos" id="todos"></ul>
+    </form>
+    <small class="direction"
+      >Left Click to toggle completed <br />
+      Right Click to delete todo</small
+    >
     <script src="script.js"></script>
   </body>
 </html>
